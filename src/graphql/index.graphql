@@ -1,0 +1,34 @@
+"""
+The assumption we have on the backend a query to get the user screenshots
+We should use a document to get the necesary data.
+"""
+query getScreenshotsByUser {
+    getScreenshotsByUser {
+        base64,
+        userId,
+        timestamp
+    }
+}
+
+
+"""
+The resolver on the server should look like this: 
+ Query: {
+    getScreenshotsByUser: (_, { id }) => {
+        // the logic to get the images from the db or another service.
+    },
+ }
+"""
+
+"""
+The schema should look like this: 
+type Screenshots {
+    base64: String!
+    userId: String!
+    timestamp: String!
+}
+
+type Query {
+    getScreenshotsByUser(id: ID!): [Screenshots!]!
+}
+"""
